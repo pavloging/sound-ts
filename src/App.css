@@ -1,0 +1,33 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    transition: 0.7s;
+}
+.main__title {
+    text-align: center;
+}
+.main__content {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+.main__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 400px;
+    background-size: cover !important;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+.main__container:hover {
+    filter: invert(1);
+}
+.main__icon{
+    width: 32px;
+    height: 32px;
+}
