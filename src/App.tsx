@@ -39,22 +39,30 @@ function App() {
         setData((prevState) => prevState.map((item) => item));
     };
 
+    const handlerChangeValue = (value: string, item: IAudio) => {
+        item.audio.volume = Number(value)/100
+        setData((prevState) => prevState.map((item) => item));
+    }
+
     return (
         <div className="main" style={{ background: `url(${background})` }}>
             <h1 className="main__title">Pavloging FM</h1>
             <div className="main__content">
                 {data.map((item: IAudio, index: number) => (
-                    <div
-                        key={index}
-                        className="main__container"
-                        style={{ background: `url(${item.img})` }}
-                        onClick={() => handlerClickContainer(item)}
-                    >
-                        <img
-                            className="main__icon"
-                            src={item.isPlaying ? pause : item.icon}
-                            alt=""
-                        />
+                    <div className="main__map" key={index}>
+                        <div
+                            className="main__container"
+                            style={{ background: `url(${item.img})` }}
+                            onClick={() => handlerClickContainer(item)}
+                        >
+                            <img
+                                className="main__icon"
+                                src={item.isPlaying ? pause : item.icon}
+                                alt=""
+                            />
+                        </div>
+
+                        {item.isPlaying && <input onChange={(e) => handlerChangeValue(e.target.value, item)} type="range" name="" id="" />}
                     </div>
                 ))}
             </div>

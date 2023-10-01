@@ -8,6 +8,10 @@
 .main__title {
     text-align: center;
 }
+.main__map{
+    display: flex;
+    flex-direction: column
+}
 .main__content {
   display: flex;
   justify-content: space-evenly;
