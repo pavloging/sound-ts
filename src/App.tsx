@@ -12,7 +12,7 @@ function pauseStop(data: IAudio[]) {
 }
 
 function playingStop(data: IAudio[]) {
-    data.forEach((item) => {
+    data.map((item) => {
         item.isPlaying = false;
     });
 }
@@ -39,8 +39,10 @@ function App() {
         setData((prevState) => prevState.map((item) => item));
     };
 
-    const handlerChangeValue = (value: string, item: IAudio) => {
-        item.audio.volume = Number(value)/100
+    const handlerChangeValue = (value: string, items: IAudio[]) => {
+        items.map((item) => {
+            item.audio.volume = Number(value)/100
+        })
         setData((prevState) => prevState.map((item) => item));
     }
 
@@ -62,10 +64,15 @@ function App() {
                             />
                         </div>
 
-                        {item.isPlaying && <input onChange={(e) => handlerChangeValue(e.target.value, item)} type="range" name="" id="" />}
                     </div>
                 ))}
+
             </div>
+            <div className="main__block-input">
+            <input className="main__input" onChange={(e) => handlerChangeValue(e.target.value, data)} type="range" name="" id="" />
+
+            </div>
+
         </div>
     );
 }
